@@ -27,16 +27,7 @@ public class Main {
         
         int user1=input.nextInt();
       
-        while(user1!=1 || user1!=2){
-           System.out.println("wrong input, please try again");
-           String x=input.nextLine();
-           char i=x.charAt(0);
-           if(x=="2"||x=="1"){
-               break;
-              
-           }
-           
-       }
+       
         
        
         
