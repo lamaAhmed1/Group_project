@@ -10,13 +10,28 @@ package cpit251_project;
  * @author lenovo
  */
 public class Product {
+    int id;
     double price;
     String type;
-
-    public Product(double price, String type) {
+   
+    
+     public Product(int id, double price, String type) {
+        this.id = id;
         this.price = price;
         this.type = type;
     }
+    
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+   
+    
 
     public double getPrice() {
         return price;

@@ -15,22 +15,34 @@ import java.util.Scanner;
  * @author lenovo
  */
 public class Main {
-      List<Product> stud=new ArrayList();
+     private List<Product> pro=new ArrayList();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner input=new Scanner(System.in);
-        
+        Main main=new Main();
+        Product prod=new Product(0,0.0,"lona");
+        main.pro.add(prod);
+        main.print();
         showMenue();
         
         int user1=input.nextInt();
         
-       int p,n;
+       //int p,n;
         
        
         
+    }
+     public void add(Product prod){
+        pro.add(prod);
+    }
+    
+     public void print(){
+        for(Product s:pro){
+            System.out.println(""+s.getId()+", "+s.getPrice()+", "+s.getType());
+        }
     }
     public static void showMenue(){
         System.out.println("****************************************************************************"
