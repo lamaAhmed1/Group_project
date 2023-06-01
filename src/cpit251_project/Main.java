@@ -27,7 +27,7 @@ public class Main {
         
         int user1=input.nextInt();
         
-       
+       int n;
         
        
         
