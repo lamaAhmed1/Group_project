@@ -16,6 +16,7 @@ import java.util.Scanner;
  */
 public class Main {
      private List<Product> pro=new ArrayList();
+     Product p;
     /**
      * @param args the command line arguments
      */
@@ -24,9 +25,34 @@ public class Main {
         Scanner input=new Scanner(System.in);
         Main main=new Main();
         Product prod=new Product(0,0.0,"lona");
+        Product prod1=new Product(0,0.0,"lona");
+        Product prod2=new Product(0,0.0,"lona");
+        Product prod3=new Product(0,0.0,"lama");
         main.pro.add(prod);
-        main.print();
+        main.pro.add(prod1);
+        main.pro.add(prod2);
+        main.pro.add(prod3);
+        /////////////////////////////////////////////////////////////////////////
         showMenue();
+        String x=input.next();
+       // check input 
+        while (!(x.charAt(0)=='1'||x.charAt(0)=='2')){
+            System.out.println("wrong input try again");
+            x=input.next();
+        }
+        
+        System.out.println("sec");
+       
+        
+        
+        
+        
+        
+        main.printAllProduct();
+        System.out.println("enter pro:");
+        String n=input.next();
+        main.searchProduct(n);
+        
         
         int user1=input.nextInt();
         
@@ -35,11 +61,19 @@ public class Main {
        
         
     }
+    public void searchProduct(String type){
+        
+         for(Product s:pro){
+             if (s.getType().equals(type)){
+                 System.out.println("information : "+ s.getType()+", "+s.getPrice()+", "+s.getId()+"");
+             }
+         }
+    }
      public void add(Product prod){
         pro.add(prod);
     }
     
-     public void print(){
+     public void printAllProduct(){
         for(Product s:pro){
             System.out.println(""+s.getId()+", "+s.getPrice()+", "+s.getType());
         }
