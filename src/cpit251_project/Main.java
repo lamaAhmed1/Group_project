@@ -42,7 +42,35 @@ public class Main {
         }
         
         System.out.println("sec");
-       
+         String i = null;
+        do{
+            
+           
+            switch(x){
+                case "1":{
+                     System.out.println("Customer menue"
+                    + "\n1 for view products"
+                    + "\n2 to view cart"
+                    + "\no to exit");
+                      i=input.next();
+                      
+                    break;
+                }
+                 case "2":{
+                 System.out.println("Artist menue"
+                    + "\n1 for view product"
+                    + "\n2 to exit");
+                     i=input.next();
+                     if(i.charAt(0)=='1'){
+                         main.printAllProduct();
+                     }
+                    break;
+                }
+                
+            }
+           
+            System.out.println("while");
+        }while(!(i.charAt(0)=='0'));
         
         
         
