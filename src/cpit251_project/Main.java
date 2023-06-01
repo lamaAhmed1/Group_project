@@ -26,9 +26,7 @@ public class Main {
         showMenue();
         
         int user1=input.nextInt();
-        String i=input.nextLine();
-        String im=input.nextLine();
-      
+        
        
         
        
