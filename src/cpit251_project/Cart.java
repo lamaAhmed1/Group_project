@@ -10,11 +10,30 @@ package cpit251_project;
  * @author lenovo
  */
 public class Cart {
-    int quantiti;
+    String type;
+    double price;
+    int quantiti=1;
     boolean status;
+    
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+     public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getQuantiti() {
-        return quantiti;
+        return quantiti++;
     }
 
     public void setQuantiti(int quantiti) {
@@ -29,8 +48,10 @@ public class Cart {
         this.status = status;
     }
 
-    public Cart(int quantiti, boolean status) {
-        this.quantiti = quantiti;
+    public Cart(String type, boolean status, double price) {
+        this.type=type;
+        
         this.status = status;
+        this.price= price;
     }
 }
