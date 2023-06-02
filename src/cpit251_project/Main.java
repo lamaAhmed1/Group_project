@@ -17,6 +17,8 @@ import java.util.Scanner;
 public class Main {
      private List<Product> productList=new ArrayList();
      private List<Cart> cartList=new ArrayList();
+     private List<Customer> cusList=new ArrayList();
+     private List<Artist> srtistList=new ArrayList();
      Product p;
      Cart cart1;
     /**
