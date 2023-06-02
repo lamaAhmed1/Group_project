@@ -10,17 +10,17 @@ package cpit251_project;
  * @author lenovo
  */
 public class Artist {
-    String id;
+    String name;
 
     public String getId() {
-        return id;
+        return name;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String name) {
+        this.name = name;
     }
 
-    public Artist(String id) {
-        this.id = id;
+    public Artist(String name) {
+        this.name = name;
     }
 }

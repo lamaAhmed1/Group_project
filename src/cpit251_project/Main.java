@@ -23,6 +23,7 @@ public class Main {
      Product p;
      Cart cart1;
      order ord;
+     Artist artId;
     /**
      * @param args the command line arguments
      */
@@ -98,6 +99,8 @@ public class Main {
                               
                            System.out.println(main.addToCart(prod3.getType(),prod3.getPrice()));
                          }
+                         else
+                             System.out.println("out of stock");
                         
                          
                          main.printCart();
@@ -116,11 +119,15 @@ public class Main {
                      else if(i.charAt(0)=='3'){
                          System.out.println("Enter type of product: acrylics, oils, watercolors, pastels");
                          String type=input.next();
-                         System.out.println( main.searchProduct(type)+",,");
+                         
+                         System.out.println( main.searchProduct(type)+",");
                      }
                     
                      else if(i.charAt(0)=='4'){
+                        
                          main.printCart();
+                        
+                         if(!main.cartList.isEmpty()){
                          System.out.println("Please enter your name");
                          String name=input.next();
                          System.out.println("Please enter your phone number:");
@@ -130,12 +137,12 @@ public class Main {
                          System.out.println("Please enter your payment method (1) for cash (2) for credit:");
                          String payment=input.next();
                          String pay;
-                         if(payment.charAt(0)=='1'){
+                             if(payment.charAt(0)=='1'){
                               pay="cash";
-                         }
-                         else{
+                           }
+                               else{
                              pay="credit";
-                         }
+                           }
                          order order1=new order(true,pay);
                          main.orderList.add(order1);
                         
@@ -145,7 +152,8 @@ public class Main {
                          System.out.println("----------The cart item-----------");
                          main.printCart();
                          System.out.println("****************************************************");
-                         
+                         }else 
+                             System.out.println("cart is empty please add items");
                          
                      }
                       
@@ -172,12 +180,14 @@ public class Main {
                          String type=input.next();
                          System.out.println("enter the price:");
                          double price=input.nextDouble();
-                         System.out.println("enter the id:");
+                         System.out.println("enter your id:");
                          String id=input.next();
+                         Artist art=new Artist(id);
                          
-                         Product prod4=new Product(id,price,type);
-                         main.addItem(prod4);
-                         System.out.println("items:");
+                         Product prod4=new Product(art.getId(),price,type);
+                         System.out.println("product with id "+main.addItem(prod4)+" added");
+                         
+                         System.out.println("items after add:");
                          main.printAllProduct();
                          
                      }
@@ -206,6 +216,7 @@ public class Main {
     ////////////////////////////////////core function///////////////////////////////////////////////////
     
     public String addToCart(String item, double price){
+       
         cart1=new Cart(item, true,0.0);
         cartList.add(cart1);
                          System.out.println("------------------------------------");
@@ -229,10 +240,10 @@ public class Main {
     
     
     public void placeOrder(String item){
+        
         ord=new order(true,item);
         orderList.add(ord);
-                         System.out.println("");
-                         System.out.println("order");
+                         
               
     }
     
@@ -242,14 +253,16 @@ public class Main {
          for(Product s:productList){
              if (s.getType().equals(type)){
                 return "information : "+ s.getType()+", "+s.getPrice()+", "+s.getId()+"";
+               
              }
          }
-         return type;
+         return null;
     }
    
     
-     public void addItem(Product prod){
+     public String addItem(Product prod){
         productList.add(prod);
+        return prod.getId();
     }
     
      
