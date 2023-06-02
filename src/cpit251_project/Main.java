@@ -78,7 +78,7 @@ public class Main {
                          String item=input.next();
                          if(item.charAt(0)=='1'){
                               
-                            main.addToCart(prod.getType(),prod.getPrice());
+                             System.out.println(main.addToCart(prod.getType(),prod.getPrice()));
                          }
                          else if(item.charAt(0)=='2'){
                               
@@ -110,7 +110,7 @@ public class Main {
                      else if(i.charAt(0)=='3'){
                          System.out.println("Enter type of product: acrylics, oils, watercolors, pastels");
                          String type=input.next();
-                         main.searchProduct(type);
+                         System.out.println( main.searchProduct(type)+",,");
                      }
                     
                      else if(i.charAt(0)=='4'){
@@ -151,8 +151,8 @@ public class Main {
                          main.printAllProduct();
                          System.out.println("Enter product id to remove it ");
                         // int id=input.nextInt();
-                        String t=input.next();
-                         main.deleteProduct(t);
+                         int t=input.nextInt();
+                         System.out.println( main.deleteProduct(t));
                          
                      }
                      
@@ -194,12 +194,12 @@ public class Main {
         
         printCart();
     }*/
-    public void addToCart(String item, double price){
+    public String addToCart(String item, double price){
         cart1=new Cart(item, true,0.0);
         cartList.add(cart1);
                          System.out.println("");
                          System.out.println("item in cart ");
-                         
+              return cart1.getType();
     }
      public void printCart(){
          int quan=0;
@@ -209,24 +209,27 @@ public class Main {
         }
          System.out.println("item number in the cart: "+quan);
     }
-    public void deleteProduct(String t){
+    public boolean deleteProduct(int t){
         
         for(Product s:productList){
-            if(s.getType()==t){
+            if(s.getId()==t){
                productList.remove(s);
                 
             }
         }
         
         printAllProduct();
+        return true;
+        
     }
-    public void searchProduct(String type){
+    public String searchProduct(String type){
         
          for(Product s:productList){
              if (s.getType().equals(type)){
-                 System.out.println("information : "+ s.getType()+", "+s.getPrice()+", "+s.getId()+"");
+                return "information : "+ s.getType()+", "+s.getPrice()+", "+s.getId()+"";
              }
          }
+         return type;
     }
      public void add(Product prod){
         productList.add(prod);
