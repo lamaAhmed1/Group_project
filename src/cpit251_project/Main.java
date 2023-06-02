@@ -35,7 +35,7 @@ public class Main {
         main.productList.add(prod2);
         main.productList.add(prod3);
         
-       
+       System.out.print("hi");
         
         /////////////////////////////////////////////////////////////////////////
         showMenue();
