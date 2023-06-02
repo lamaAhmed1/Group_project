@@ -18,9 +18,11 @@ public class Main {
      private List<Product> productList=new ArrayList();
      private List<Cart> cartList=new ArrayList();
      private List<Customer> cusList=new ArrayList();
-     private List<Artist> srtistList=new ArrayList();
+     private List<Artist> artistList=new ArrayList();
+     private List<order> orderList=new ArrayList();
      Product p;
      Cart cart1;
+     order ord;
     /**
      * @param args the command line arguments
      */
@@ -28,10 +30,10 @@ public class Main {
         // TODO code application logic here
         Scanner input=new Scanner(System.in);
         Main main=new Main();
-        Product prod=new Product(1,0.0,"acrylics");
-        Product prod1=new Product(2,1.0,"oils");
-        Product prod2=new Product(3,0.0,"watercolors");
-        Product prod3=new Product(4,0.0,"pastels");
+        Product prod=new Product("1",0.0,"acrylics");
+        Product prod1=new Product("2",1.0,"oils");
+        Product prod2=new Product("3",0.0,"watercolors");
+        Product prod3=new Product("4",0.0,"pastels");
         main.productList.add(prod);
         main.productList.add(prod1);
         main.productList.add(prod2);
@@ -86,15 +88,15 @@ public class Main {
                          }
                          else if(item.charAt(0)=='2'){
                               
-                            main.addToCart(prod1.getType(), prod1.getPrice());
+                            System.out.println(main.addToCart(prod1.getType(),prod1.getPrice()));
                          }
                          else if(item.charAt(0)=='3'){
                               
-                            main.addToCart(prod2.getType(), prod2.getPrice());
+                            System.out.println(main.addToCart(prod2.getType(),prod2.getPrice()));
                          }
                          else if(item.charAt(0)=='4'){
                               
-                            main.addToCart(prod3.getType(), prod3.getPrice());
+                           System.out.println(main.addToCart(prod3.getType(),prod3.getPrice()));
                          }
                         
                          
@@ -118,12 +120,40 @@ public class Main {
                      }
                     
                      else if(i.charAt(0)=='4'){
-                         main.printAllProduct();
+                         main.printCart();
+                         System.out.println("Please enter your name");
+                         String name=input.next();
+                         System.out.println("Please enter your phone number:");
+                         String phone=input.next();
+                         Customer cusinfo=new Customer(phone,name);
+                         main.cusList.add(cusinfo);
+                         System.out.println("Please enter your payment method (1) for cash (2) for credit:");
+                         String payment=input.next();
+                         String pay;
+                         if(payment.charAt(0)=='1'){
+                              pay="cash";
+                         }
+                         else{
+                             pay="credit";
+                         }
+                         order order1=new order(true,pay);
+                         main.orderList.add(order1);
+                        
+                         main.printcus();
+                         main.printorder();
+                         System.out.println("");
+                         System.out.println("----------The cart item-----------");
+                         main.printCart();
+                         System.out.println("****************************************************");
+                         
+                         
                      }
                       
                     break;
                 }
                  
+                
+              ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 
                 case "2":{
                  System.out.println("-----------------Artist menue----------------"
@@ -143,22 +173,22 @@ public class Main {
                          System.out.println("enter the price:");
                          double price=input.nextDouble();
                          System.out.println("enter the id:");
-                         int id=input.nextInt();
+                         String id=input.next();
                          
                          Product prod4=new Product(id,price,type);
-                         main.productList.add(prod4);
+                         main.addItem(prod4);
                          System.out.println("items:");
                          main.printAllProduct();
                          
                      }
-                     else if(i.charAt(0)=='3'){
+                  /**   else if(i.charAt(0)=='3'){
                          main.printAllProduct();
                          System.out.println("Enter product id to remove it ");
                         // int id=input.nextInt();
-                         int t=input.nextInt();
-                         System.out.println( main.deleteProduct(t));
+                         String t=input.next();
+                          main.deleteProduct(t);
                          
-                     }
+                     }*/
                      
                     
                     break;
@@ -166,66 +196,47 @@ public class Main {
                 
             }
            
-            System.out.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+            System.out.println("\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\");
         }while(!(i.charAt(0)=='0'));
-        System.out.println("while end");
+        System.out.println("---------- Thank you ------------");
         
-        
-        
-        
-        main.printAllProduct();
-        System.out.println("enter pro:");
-        String n=input.next();
-        main.searchProduct(n);
-        
-        
-       // int user1=input.nextInt();
-        
-       //int p,n;
-        
-       
         
     }
-   /** public void copy(String type){
-        for( Product s:productList){
-            if(s.getType()==type){
-               System.out.println("information : "+ s.getType()+", "+s.getPrice()+", "+s.getId()+"");
-                
-               cart1=new Cart(s.getType(), 1,true,s.getPrice());
-               cartList.add(cart1);
-            }
-        }
-        
-        printCart();
-    }*/
+   
+    ////////////////////////////////////core function///////////////////////////////////////////////////
+    
     public String addToCart(String item, double price){
         cart1=new Cart(item, true,0.0);
         cartList.add(cart1);
-                         System.out.println("");
-                         System.out.println("item in cart ");
+                         System.out.println("------------------------------------");
+                         System.out.println("          item in cart ");
+                         System.out.println("------------------------------------");
               return cart1.getType();
     }
+    
+    
      public void printCart(){
          int quan=0;
          for(Cart s:cartList){
-            System.out.println(", "+s.getType()+", "+s.price);
+            System.out.println("item type:"+s.getType()+""
+                    + "\nitem price: "+s.price);
             quan++;
         }
          System.out.println("item number in the cart: "+quan);
+         System.out.println("------------------------------------");
     }
-    public boolean deleteProduct(int t){
-        
-        for(Product s:productList){
-            if(s.getId()==t){
-               productList.remove(s);
-                
-            }
-        }
-        
-        printAllProduct();
-        return true;
-        
+     
+    
+    
+    public void placeOrder(String item){
+        ord=new order(true,item);
+        orderList.add(ord);
+                         System.out.println("");
+                         System.out.println("order");
+              
     }
+    
+    
     public String searchProduct(String type){
         
          for(Product s:productList){
@@ -235,15 +246,52 @@ public class Main {
          }
          return type;
     }
-     public void add(Product prod){
+   
+    
+     public void addItem(Product prod){
         productList.add(prod);
     }
     
+     
      public void printAllProduct(){
         for(Product s:productList){
             System.out.println(""+s.getId()+", "+s.getPrice()+", "+s.getType());
         }
     }
+     
+     /////////////////////////////////////////////extra ///////////////////////////////////////////////////////////
+      public void printcus(){
+         
+         for(Customer s:cusList){
+            System.out.println("***************Order information ******************"
+                    + "\n"
+                    + "\n user name:"+s.getUserName()+""
+                     + "\n user phone number "+s.getPhone());
+            
+        }
+     }
+    
+    public void printorder(){
+         
+         for(order s:orderList){
+             System.out.println("");
+            System.out.println(" confirmation status:"+s.isConfirm()+""
+                    + "\n payment method: "+s.getPaymentMethod());
+             
+        }
+    }
+    
+     public void deleteProduct(String t){
+        
+        for(Product s:productList){
+            if(s.getId().equals(t)){
+               productList.remove(s);
+                
+            }
+        }
+    }
+     
+     //////////////////////////////////////////menue method/////////////////////////////////////////////////////////
     public static void showMenue(){
         System.out.println("****************************************************************************"
                          + "\n****************************************************************************"

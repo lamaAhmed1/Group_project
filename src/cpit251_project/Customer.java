@@ -10,14 +10,14 @@ package cpit251_project;
  * @author lenovo
  */
 public class Customer {
-    int phone;
-    String userName, userEmail;
+    String phone;
+    String userName;
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -29,17 +29,11 @@ public class Customer {
         this.userName = userName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
+   
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public Customer(int phone, String userName, String userEmail) {
+    public Customer(String phone, String userName) {
         this.phone = phone;
         this.userName = userName;
-        this.userEmail = userEmail;
+        
     }
 }

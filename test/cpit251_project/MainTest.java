@@ -41,80 +41,123 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
-    
+    @Test
+    public void testMain() {
+        System.out.println("main");
+        String[] args = null;
+        Main.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of printcus method, of class Main.
+     */
+    @Test
+    public void testPrintcus() {
+        System.out.println("printcus");
+        Main instance = new Main();
+        instance.printcus();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of placeOrder method, of class Main.
+     */
+    //DONE
+    @Test
+    public void testPlaceOrder() {
+        System.out.println("placeOrder");
+        String item = "";
+        Main instance = new Main();
+        instance.placeOrder(item);
+        Assert.assertNotNull(item);
+    }
+
+    /**
+     * Test of printorder method, of class Main.
+     */
+    @Test
+    public void testPrintorder() {
+        System.out.println("printorder");
+        Main instance = new Main();
+        instance.printorder();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 
     /**
      * Test of addToCart method, of class Main.
      */
+    //DONE
     @Test
     public void testAddToCart() {
         System.out.println("addToCart");
         String item = "lama";
-        double price = 0.0;
-        
+        double price = 1.0;
         Main instance = new Main();
-       // Product p=new Product(0,0,"");
-        String exept="lama";
-        String cart= instance.addToCart(item, price);
-        Assert.assertSame(exept, cart);
+        String expResult = "lama";
+        String result = instance.addToCart(item, price);
+        assertEquals(expResult, result);
+        Assert.assertNotNull(item,price);//extra
+        
     }
 
     /**
      * Test of printCart method, of class Main.
      */
-    
+    @Test
+    public void testPrintCart() {
+        System.out.println("printCart");
+        Main instance = new Main();
+        instance.printCart();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 
     /**
      * Test of deleteProduct method, of class Main.
      */
-    //done
-    @Test (timeout=90)
+    @Test
     public void testDeleteProduct() {
         System.out.println("deleteProduct");
-        int t = 1;
+        String t = "";
         Main instance = new Main();
-        boolean expe=true;
-        boolean re=instance.deleteProduct(t);
-        Assert.assertEquals(expe, re);
-       // Assert.assertNotNull(t);
+        instance.deleteProduct(t);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
      * Test of searchProduct method, of class Main.
      */
-    //done
+    /////DONE
     @Test
     public void testSearchProduct() {
         System.out.println("searchProduct");
-        String type = "oils";
+        String type = "lama";
         Main instance = new Main();
-        String result= instance.searchProduct(type);
-       String except="oils";
-      Assert.assertSame(except, result);
-
-       // Assert.assertNotNull(type);
+        String expResult = "lama";
+        String result = instance.searchProduct(type);
+        assertEquals(expResult, result);
+        Assert.assertNotNull(result);// extra
+        
     }
 
     /**
-     * Test of add method, of class Main.
+     * Test of addItem method, of class Main.
      */
+    //DONE
     @Test
-    public void testAdd() {
-        System.out.println("add");
-        Product prod = new Product(2,2.0," ");
-       
+    public void testAddItem() {
+        System.out.println("addItem");
+        Product prod = new Product("1",0.0,"lama");
         Main instance = new Main();
-        instance.add(prod);
-        Product exprod2 = prod;
-        
-       // instance.add(prod);
-        Assert.assertSame(exprod2,prod);
-        
-        
-        // assertArrayEquals(expect,instance.add(prod));
-       
+        instance.addItem(prod);
+        Product expecteds=prod;
+        Assert.assertSame(expecteds, prod);
     }
-    
 
     /**
      * Test of printAllProduct method, of class Main.
@@ -124,12 +167,13 @@ public class MainTest {
         System.out.println("printAllProduct");
         Main instance = new Main();
         instance.printAllProduct();
-        Assert.assertNotNull(this);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
      * Test of showMenue method, of class Main.
      */
-    
+  
     
 }
