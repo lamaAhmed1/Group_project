@@ -35,6 +35,8 @@ public class Main {
         main.productList.add(prod2);
         main.productList.add(prod3);
         
+       int s,//
+        
         /////////////////////////////////////////////////////////////////////////
         showMenue();
         String x=input.next();
