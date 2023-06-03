@@ -49,4 +49,10 @@ public class Product {
         this.type = type;
     }
     
+    public String prodInfo(){
+        
+        return ","+this.id+", "+this.type+", "+this.price;
+        
+    }
+    
 }

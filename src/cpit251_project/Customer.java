@@ -36,4 +36,12 @@ public class Customer {
         this.userName = userName;
         
     }
+     public String customerInfo(){
+        
+        return "************ customer information ***************"
+                    + "\n"
+                    + "\n user name:"+this.userName+""
+                     + "\n user phone number "+this.phone;
+        
+    }
 }

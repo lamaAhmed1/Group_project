@@ -40,7 +40,7 @@ public class Main {
         main.productList.add(prod2);
         main.productList.add(prod3);
         
-       System.out.print("hi");
+       
         
         /////////////////////////////////////////////////////////////////////////
         showMenue();
@@ -137,7 +137,8 @@ public class Main {
                          System.out.println("Please enter your payment method (1) for cash (2) for credit:");
                          String payment=input.next();
                          String pay;
-                             if(payment.charAt(0)=='1'){
+                          
+                         if(payment.charAt(0)=='1'){
                               pay="cash";
                            }
                                else{
@@ -167,7 +168,7 @@ public class Main {
                  System.out.println("-----------------Artist menue----------------"
                                   + "\n1 for view product"
                                   + "\n2 to add new item"
-                                  + "\n3 to remove item"
+                               
                                   + "\n0 exit"
                                   + "\n--------------------------------------------");
                      i=input.next();
@@ -252,7 +253,7 @@ public class Main {
         
          for(Product s:productList){
              if (s.getType().equals(type)){
-                return "information : "+ s.getType()+", "+s.getPrice()+", "+s.getId()+"";
+                return "information : "+ s.prodInfo();///////////////////////////////////////
                
              }
          }
@@ -268,7 +269,7 @@ public class Main {
      
      public void printAllProduct(){
         for(Product s:productList){
-            System.out.println(""+s.getId()+", "+s.getPrice()+", "+s.getType());
+            System.out.println(""+s.prodInfo());
         }
     }
      
@@ -278,8 +279,7 @@ public class Main {
          for(Customer s:cusList){
             System.out.println("***************Order information ******************"
                     + "\n"
-                    + "\n user name:"+s.getUserName()+""
-                     + "\n user phone number "+s.getPhone());
+                    + "\n "+s.customerInfo());
             
         }
      }
